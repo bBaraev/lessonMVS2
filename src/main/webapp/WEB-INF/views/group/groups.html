@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Courses</title>
+    <style>
+        body{
+            background: #a4a2a2;
+        }
+    </style>
+    <style>table,
+
+    td {
+        border: 1px solid #a3a89d;
+        margin-top: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size:25px;
+    }
+
+    thead,
+    tfoot {
+        background-color: #767694;
+        color: #fff;
+    }
+    </style>
+    <style>
+        table, th, td {
+            border: 1px solid #9a8f8f;
+            padding: 3px;
+        }
+    </style>
+    <style>
+        ol{
+            margin-top: 200px;
+            size: 5000px;
+            width: 900px;
+            display: flex;
+            justify-content: space-between;
+
+
+        }
+    </style>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link " href="/getAllCompanies#">Company</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/getCourses#">Course</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/getGroup#">Group</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/getStudent#">Student</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/getTeacher#">Teacher</a>
+    </li>
+
+</ul>
+
+
+<table class="table table-bordered ">
+    <thead class="table-dark">
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Group name</th>
+        <th scope="col">Date Of Start</th>
+        <th scope="col">Date Of Finish</th>
+
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+
+    </tr>
+    </thead>
+    <tbody class="table-success">
+    <tr th:each="group : ${groups}">
+        <td th:text="${group.id}"></td>
+        <td th:text="${group.groupName}"></td>
+        <td th:text="${group.dateOfStart}"></td>
+        <td th:text="${group.dateOfFinish}"></td>
+        </a></td>
+
+
+        <td>
+            <a th:href="@{/updateGroup(groupId=${group.id},courseId=${param.courseId})}">
+                <button style = "height: 40px; width: 80px; background-color:#a6a5d3;">update</button>
+            </a>
+        </td>
+        <td><a th:href="@{/deleteGroup(groupId=${group.id},courseId=${param.courseId})}"
+               onclick="return confirm('Are you sure you want to delete this group?');">
+            <button style = "height: 40px; width: 80px; background-color:#d2aeae;">delete</button>
+        </a></td>
+
+    </tr>
+    </tbody>
+</table>
+<br>
+<div style = "text-align:center; "><a th:href="@{/addGroup}"><button style = "font-size:50px;">Add Group</button></a></div>
+<br>
+
+
+<div style = "text-align:center; "><a th:href="@{/getCourses}"><button style = "font-size:20px;">Back to course</button></a></div>
+
+</body>
+</html>

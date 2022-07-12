@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Groups-Courses</title>
+
+
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Group Name</th>
+        <th>Duration month</th>
+
+    </tr>
+    <dy class="table-success">
+        <tr th:each="course: ${getBiGroup}">
+            <td th:text="${course.id}"></td>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.durationInMonth}"></td>
+            <td th:text="${course.getCompany().getCompanyName()}"></td>
+        </tr>
+    </dy>
+</table>
+
+</body>
+</html>
